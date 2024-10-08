@@ -18,6 +18,14 @@ export default function Homepage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
+  // Move the handleLogout function definition before useEffect
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsAuthenticated(false);
+    router.push("/login");
+  };
+
   useEffect(() => {
     const checkAuth = () => {
       const token = localStorage.getItem("token");
@@ -40,7 +48,7 @@ export default function Homepage() {
         window.location.reload();
       } else if (url !== "/homepage" && isAuthenticated) {
         alert("You have been logged out due to URL change.");
-        handleLogout();
+        handleLogout(); // Now handleLogout is accessible here
       }
     };
 
@@ -49,7 +57,7 @@ export default function Homepage() {
     return () => {
       router.events?.off("routeChangeStart", handleUrlChange);
     };
-  }, [isAuthenticated, router, handleLogout]);
+  }, [isAuthenticated, router]);
 
   const fetchPhotos = async (query, page = 1) => {
     setLoading(true);
@@ -114,13 +122,6 @@ export default function Homepage() {
     if (page > 1) {
       setPage(page - 1);
     }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setIsAuthenticated(false);
-    router.push("/login");
   };
 
   if (!isAuthenticated) {
