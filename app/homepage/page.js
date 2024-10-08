@@ -49,7 +49,7 @@ export default function Homepage() {
     return () => {
       router.events?.off("routeChangeStart", handleUrlChange);
     };
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, router, handleLogout]);
 
   const fetchPhotos = async (query, page = 1) => {
     setLoading(true);
@@ -175,7 +175,7 @@ export default function Homepage() {
         {!loading && photos.length === 0 && query && (
           <div className="flex justify-center items-center">
             <p className="text-gray-200 text-xl">
-              No photos found for "{query}".
+              No photos found for &quot;{query}&quot;.
             </p>
           </div>
         )}
