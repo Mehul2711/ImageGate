@@ -126,7 +126,10 @@ export default function Form() {
             <PhoneInput
               country={"us"} // You can set a default country
               value={phoneNumber}
-              onChange={setPhoneNumber}
+              onChange={(value) => {
+                console.log("Phone Number:", value); // Debugging
+                setPhoneNumber(value);
+              }}
               inputStyle={{
                 width: "100%",
                 paddingLeft: "45px",
