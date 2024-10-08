@@ -64,7 +64,7 @@ export default function Homepage() {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://imagegatebe.onrender.com/api/search-photos?query=${query}&page=${page}`
+        `https://image-gate-be.vercel.app/api/search-photos?query=${query}&page=${page}`
       );
       if (!res.ok) {
         throw new Error("Error fetching data");
