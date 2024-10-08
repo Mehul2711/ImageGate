@@ -75,7 +75,13 @@ export default function Homepage() {
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data from backend:", error);
-      setLoading(false);
+      if (retries > 0) {
+        setTimeout(() => {
+          fetchPhotos(query, page, retries - 1);
+        }, 1000); // Retry after 1 second
+      } else {
+        setLoading(false);
+      }
     }
   };
 
