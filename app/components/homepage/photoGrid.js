@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 export default function PhotoGrid({ photos }) {
   const downloadImage = async (url, filename) => {
@@ -22,15 +21,10 @@ export default function PhotoGrid({ photos }) {
           key={photo.id}
           className="relative max-w-sm rounded-xl overflow-hidden shadow-lg group"
         >
-          <Image
+          <img
             className="w-full h-64 object-cover transition-all duration-300 group-hover:blur-sm"
             src={photo.src.large}
             alt={photo.photographer}
-            layout="responsive"
-            width={500} // Set the width
-            height={500} // Set the height
-            priority // Prioritize loading for these images (optional)
-            quality={75}
           />
 
           <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
