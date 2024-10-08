@@ -1,36 +1,27 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import User from "../../../../backend/models/user"; // Assuming you have your User model here
-import dbConnect from "../../../lib/dbConnect"; // Utility function to connect to MongoDB
+import axios from "axios"; // Use Axios to make requests to the backend
 
 export async function POST(request) {
   const { email, password } = await request.json();
 
-  await dbConnect(); // Connect to the database
+  try {
+    const response = await axios.post(
+      "https://imagegatebe.onrender.com/login",
+      {
+        email,
+        password,
+      }
+    );
 
-  // Find the user by email
-  const user = await User.findOne({ email });
-  if (!user) {
+    // Extract token from the backend response
+    const { token } = response.data;
+
+    // Return the token to the frontend
+    return NextResponse.json({ token }, { status: 200 });
+  } catch (error) {
     return NextResponse.json(
-      { message: "Invalid credentials" },
+      { message: "Invalid credentials or server error" },
       { status: 400 }
     );
   }
-
-  // Check if the password matches
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    return NextResponse.json(
-      { message: "Invalid credentials" },
-      { status: 400 }
-    );
-  }
-
-  // Generate a JWT token
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
-  });
-
-  return NextResponse.json({ token }, { status: 200 });
 }

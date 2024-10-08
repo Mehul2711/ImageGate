@@ -1,45 +1,40 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcrypt";
-import User from "../../../../backend/models/user"; // Assuming you have your User model here
-import dbConnect from "../../../lib/dbConnect"; // Utility function to connect to MongoDB
+import axios from "axios"; // Use Axios to make HTTP requests to the backend
 
 export async function POST(request) {
   const { email, password, firstName, lastName, phoneNumber } =
     await request.json();
 
-  await dbConnect();
-
-  // Check if user already exists
-  const existingUser = await User.findOne({ email });
-  if (existingUser) {
-    return NextResponse.json(
-      { message: "User already exists with this email" },
-      { status: 400 }
-    );
-  }
-
-  // Hash the password before saving
-  const hashedPassword = await bcrypt.hash(password, 10);
-
   try {
-    // Create a new user with all fields
-    const newUser = new User({
-      email,
-      password: hashedPassword,
-      firstName,
-      lastName,
-      phoneNumber,
-    });
-    await newUser.save();
+    // Make a POST request to your backend's signup API
+    const response = await axios.post(
+      "https://imagegatebe.onrender.com/signup",
+      {
+        email,
+        password,
+        firstName,
+        lastName,
+        phoneNumber,
+      }
+    );
 
+    // Return a success response if user creation is successful
     return NextResponse.json(
       { message: "User created successfully" },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error creating user:", error);
+    console.error(
+      "Error creating user:",
+      error.response ? error.response.data : error.message
+    );
+
+    // Return an error response if something goes wrong
     return NextResponse.json(
-      { message: "Error creating user" },
+      {
+        message: "Error creating user",
+        error: error.response ? error.response.data : error.message,
+      },
       { status: 500 }
     );
   }
