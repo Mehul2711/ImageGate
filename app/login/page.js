@@ -16,7 +16,7 @@ export default function Login() {
 
       // Make a request to the backend API
       const { data } = await axios.post(
-        "https://imagegatebe.onrender.com/login",
+        "https://image-gate-be.vercel.app/login",
         {
           email,
           password,

@@ -8,7 +8,7 @@ export async function POST(request) {
   try {
     // Make a POST request to your backend's signup API
     const response = await axios.post(
-      "https://imagegatebe.onrender.com/signup",
+      "https://image-gate-be.vercel.app/signup",
       {
         email,
         password,

@@ -6,7 +6,7 @@ export async function POST(request) {
 
   try {
     const response = await axios.post(
-      "https://imagegatebe.onrender.com/login",
+      "https://image-gate-be.vercel.app/login",
       {
         email,
         password,

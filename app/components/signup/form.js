@@ -33,7 +33,7 @@ export default function Form() {
     }
 
     try {
-      await axios.post("https://imagegatebe.onrender.com/signup", {
+      await axios.post("https://image-gate-be.vercel.app/signup", {
         email,
         password,
         firstName,
