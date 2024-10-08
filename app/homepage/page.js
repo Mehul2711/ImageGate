@@ -48,7 +48,7 @@ export default function Homepage() {
         window.location.reload();
       } else if (url !== "/homepage" && isAuthenticated) {
         alert("You have been logged out due to URL change.");
-        handleLogout(); // Now handleLogout is accessible here
+        handleLogout();
       }
     };
 
@@ -59,16 +59,12 @@ export default function Homepage() {
     };
   }, [isAuthenticated, router]);
 
+  // Updated fetchPhotos to use the backend
   const fetchPhotos = async (query, page = 1) => {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://api.pexels.com/v1/search?query=${query}&per_page=10&page=${page}`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_PEXELS_API_KEY}`,
-          },
-        }
+        `https://imagegatebe.onrender.com/api/search-photos?query=${query}&page=${page}`
       );
       if (!res.ok) {
         throw new Error("Error fetching data");
@@ -78,7 +74,7 @@ export default function Homepage() {
       setTotalResults(data.total_results || 0);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching data from Pexels:", error);
+      console.error("Error fetching data from backend:", error);
       setLoading(false);
     }
   };
