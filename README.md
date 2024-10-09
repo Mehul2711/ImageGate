@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ImageGate - A Photo Search Application
 
-## Getting Started
+**ImageGate** is a web application that allows users to search for photos using the [Pexels API](https://www.pexels.com/api/). It offers a simple user interface where users can log in, search for images by keyword, and view them in a responsive grid layout. The application also provides pagination to browse through multiple pages of results and features user authentication to personalize the experience.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **User Authentication**: Users must sign up or log in to use the application.
+- **Search Functionality**: Users can search for images using a keyword through the Pexels API.
+- **Image Display**: Searched images are displayed in a responsive grid format.
+- **Pagination**: Easily navigate through pages of image results.
+- **Profile Management**: Displays the user's full name, with an option to log out.
+- **Loading Spinner**: Shows a loading indicator while the application fetches data from the backend.
+- **Responsive Design**: The app is fully responsive and adapts to different screen sizes.
+- **Animated Background**: A visually engaging animated background image.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**:
+  - React (with Hooks)
+  - Next.js
+  - Tailwind CSS
+- **Backend**:
+  - Node.js
+  - Express.js
+  - MongoDB (for user authentication and storing user details)
+  - JWT (for secure authentication)
+- **API**: Pexels API (for fetching photos)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Prerequisites
 
-## Learn More
+Before you begin, ensure you have the following installed on your system:
 
-To learn more about Next.js, take a look at the following resources:
+- **Node.js**: >= 14.x
+- **MongoDB**: Make sure MongoDB is installed and running locally or use a cloud MongoDB service (e.g., MongoDB Atlas)
+- **Pexels API Key**: You'll need to sign up on [Pexels](https://www.pexels.com/api/) and get your API key.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
