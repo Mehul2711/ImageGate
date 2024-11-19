@@ -18,7 +18,7 @@ export default function Homepage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
-  // Move the handleLogout function definition before useEffect
+  
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
