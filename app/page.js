@@ -2,9 +2,9 @@
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
-  const router = useRouter(); // Initialize router for navigation
+  const router = useRouter(); 
 
-  // Redirect to login page when "Start" is clicked
+
   const handleStart = () => {
     router.push("/login");
   };
