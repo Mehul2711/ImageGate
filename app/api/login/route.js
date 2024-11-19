@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import axios from "axios"; // Use Axios to make requests to the backend
+import axios from "axios"; 
 
 export async function POST(request) {
   const { email, password } = await request.json();
@@ -13,10 +13,9 @@ export async function POST(request) {
       }
     );
 
-    // Extract token from the backend response
     const { token } = response.data;
 
-    // Return the token to the frontend
+
     return NextResponse.json({ token }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
