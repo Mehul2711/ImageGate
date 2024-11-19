@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Floating Shapes */}
+    
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-br from-yellow-500 to-pink-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-floating delay-300"></div>
       <div className="absolute bottom-12 right-12 w-48 h-48 bg-gradient-to-tl from-indigo-500 to-purple-500 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-floating"></div>
     </div>
