@@ -88,7 +88,7 @@ export default function Login() {
             Welcome back!
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Email */}
+           
             <div>
               <label
                 htmlFor="email"
