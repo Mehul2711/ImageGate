@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css"; // Import the default styling for the phone input
+import "react-phone-input-2/lib/style.css"; 
 
 export default function Form() {
   const [email, setEmail] = useState("");
@@ -26,7 +26,6 @@ export default function Form() {
       return;
     }
 
-    // Check if passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
@@ -58,7 +57,7 @@ export default function Form() {
       </h1>
       {!userCreated ? (
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* First Name */}
+       
           <div>
             <label
               htmlFor="firstName"
@@ -77,7 +76,7 @@ export default function Form() {
             />
           </div>
 
-          {/* Last Name */}
+    
           <div>
             <label
               htmlFor="lastName"
@@ -96,7 +95,7 @@ export default function Form() {
             />
           </div>
 
-          {/* Email */}
+   
           <div>
             <label
               htmlFor="email"
@@ -115,7 +114,7 @@ export default function Form() {
             />
           </div>
 
-          {/* Phone Number with ISD */}
+         
           <div>
             <label
               htmlFor="phoneNumber"
@@ -124,10 +123,10 @@ export default function Form() {
               Phone Number
             </label>
             <PhoneInput
-              country={"us"} // You can set a default country
+              country={"us"} 
               value={phoneNumber}
               onChange={(value) => {
-                console.log("Phone Number:", value); // Debugging
+                console.log("Phone Number:", value); 
                 setPhoneNumber(value);
               }}
               inputStyle={{
@@ -150,7 +149,7 @@ export default function Form() {
             />
           </div>
 
-          {/* Password */}
+       
           <div>
             <label
               htmlFor="password"
@@ -175,7 +174,7 @@ export default function Form() {
             </span>
           </div>
 
-          {/* Confirm Password */}
+       
           <div>
             <label
               htmlFor="confirmPassword"
@@ -200,7 +199,7 @@ export default function Form() {
             </span>
           </div>
 
-          {/* Submit Button */}
+        
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-semibold shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
