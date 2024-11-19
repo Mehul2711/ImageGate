@@ -14,7 +14,7 @@ export default function Login() {
     try {
       console.log("Attempting to log in...");
 
-      // Make a request to the backend API
+      
       const { data } = await axios.post(
         "https://image-gate-be.vercel.app/login",
         {
@@ -23,38 +23,37 @@ export default function Login() {
         },
         {
           headers: {
-            // Include the CORS headers if necessary
+            
             "Content-Type": "application/json",
           },
         }
       );
 
-      // Check if data contains the expected values before proceeding
+     
       if (!data.token || !data.fullName) {
         throw new Error("Invalid response from server");
       }
 
       console.log("Login successful, saving token and user info...");
 
-      // If the login is successful, save the token and user data
+    
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify({ fullName: data.fullName }));
 
-      // Redirect to homepage
+    
       router.push("/homepage");
     } catch (error) {
-      // Improved error handling to detect various issues
+     
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
+       
         console.error("Response error: ", error.response.data);
         alert("Invalid credentials or server error. Please try again.");
       } else if (error.request) {
-        // The request was made but no response was received
+        
         console.error("Request error: ", error.request);
         alert("No response from server. Please check your connection.");
       } else {
-        // Something happened in setting up the request that triggered an Error
+       
         console.error("Error: ", error.message);
         alert("Error in login request. Please try again.");
       }
@@ -63,7 +62,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Section */}
+   
       <div className="hidden md:flex w-1/2 bg-blue-900 justify-center items-center">
         <div className="text-center text-white">
           <h2 className="text-4xl font-bold mb-4">Welcome to ImageGate</h2>
