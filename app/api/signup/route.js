@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import axios from "axios"; // Use Axios to make HTTP requests to the backend
+import axios from "axios"; 
 
 export async function POST(request) {
   const { email, password, firstName, lastName, phoneNumber } =
     await request.json();
 
   try {
-    // Make a POST request to your backend's signup API
+   
     const response = await axios.post(
       "https://image-gate-be.vercel.app/signup",
       {
@@ -18,7 +18,7 @@ export async function POST(request) {
       }
     );
 
-    // Return a success response if user creation is successful
+  
     return NextResponse.json(
       { message: "User created successfully" },
       { status: 201 }
@@ -29,7 +29,7 @@ export async function POST(request) {
       error.response ? error.response.data : error.message
     );
 
-    // Return an error response if something goes wrong
+
     return NextResponse.json(
       {
         message: "Error creating user",
