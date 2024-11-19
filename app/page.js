@@ -11,14 +11,14 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen  bg-blue-900  flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Background Elements */}
+    
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
         <div className="absolute top-32 right-12 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
         <div className="absolute bottom-32 left-16 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
       </div>
 
-      {/* Main Content */}
+
       <div className="bg-blue-950 backdrop-blur-xl shadow-xl p-20 rounded-lg">
         <div className="z-10 text-center text-white space-y-6">
           <h1 className="text-5xl font-extrabold tracking-tight mb-6 animate-fade-in-up">
@@ -29,7 +29,7 @@ export default function HomePage() {
             Get started now!
           </p>
 
-          {/* Start Button */}
+      
           <div className="mt-10">
             <button
               onClick={handleStart}
